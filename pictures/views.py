@@ -1,5 +1,4 @@
 import io
-
 from PIL import Image
 from django.core.files.base import ContentFile
 from rest_framework import viewsets
@@ -41,44 +40,4 @@ class FigureViewSet(viewsets.ModelViewSet):
 
         return Response(serializer.data)
 
-        #вставка stackoverflow.com
-        # buffer = io.BytesIO()
-        # new_im.save(fp=buffer, format='JPEG')
-        # return ContentFile(buffer.getvalue())
 
-        # assuming your Model instance is called `instance`
-        # image_field = instance.image_field
-        # img_name = 'my_image.jpg'
-        # img_path = settings.MEDIA_ROOT + img_name
-        #
-        # pillow_image = resize_image(
-        #     image_field,
-        #     width=IMAGE_WIDTH,
-        #     height=IMAGE_HEIGHT,
-        #     name=img_path)
-
-    #
-    #
-    #
-    #     new_instance = Figure(height=new_height, width=new_width, name=instance.name)
-    #     instance.picture.save(
-    #         instance.name,
-    #         new_im
-    #     )
-    #     new_instance.save()
-    #     #instance.parent_picture = pk
-    #
-    #     serializer = self.get_serializer(new_instance)
-    #     return Response(serializer.data)
-    #
-    #     im = Image.open(instance.picture)
-    #     width, height = im.size
-    #     instance.width = width
-    #     instance.height = height
-    #     instance.name = name
-    #     instance.save()
-    #     return instance
-    #
-    #     # сохранение обьекта pillow в file_field модели Django
-    #
-    #

@@ -1,15 +1,9 @@
 import io
 from pathlib import Path
-
 import requests
 from django.core import files
-from django.core.files.uploadedfile import TemporaryUploadedFile, UploadedFile
-from requests import request
 from rest_framework import serializers
-
-from config import settings
 from .models import Figure
-from django.core.files.base import ContentFile
 from PIL import Image
 from urllib.parse import urlparse
 
@@ -56,17 +50,6 @@ class FigureSerializer(serializers.ModelSerializer):
             instance.save()
             return instance
 
-            # f = open(name_from_url, 'wb')
-            #
-            # f.write(picture_from_url_response.content)
-            # f.close()
-
-            # width, height = im.size
-            # instance.width = width
-            # instance.height = height
-            # instance.name = name_from_url
-            # instance.save()
-            # return instance
         else:
 
             im = Image.open(instance.picture)
@@ -91,21 +74,6 @@ class FigureResizeSerializer(serializers.Serializer):
         if not (width and height or height or width):
             raise serializers.ValidationError('not data for resize')
         return raw_data
-
-
-    # def resize_picture(self, instance_id, data):
-    #     new_width = data.get('width')
-    #     new_height = data.get('height')
-    #     if new_width and new_height or new_width or new_height:
-    #         idx = instance_id.get('id')
-    #         instance = super().save()
-    #         im = Image.open(instance.picture)
-    #         new_width, new_height = im.size
-    #         instance.width = new_width
-    #         instance.height = new_width
-    #         instance.parent_picture = idx
-    #         instance.save()
-    #         return instance
 
 
 
